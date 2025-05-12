@@ -1,13 +1,12 @@
 ---
-import ListTitle from '../../components/ListTitle.astro'
+import ListTitle from '../../components/ListTitle.astro';
 import {getCollection} from 'astro:content';
-const posts = await getCollection('blog');
+const posts = await getCollection('golangBlog');
 const blogContent ={
-    type:'blog',
-    title:'经验总结'
+    type:'golangBlog',
+    title:'从GO到K8S'
 }
 ---
-
 <div class="blog-list">
     <ListTitle type={blogContent.type} title={blogContent.title}/>
     <ul>
@@ -28,6 +27,15 @@ const blogContent ={
     margin: 0 auto;
     max-width: 500px;
     padding: 20px 0;
+
+    h3 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      margin: 0 auto;
+      width: fit-content;
+    }
 
     ul {
       a {

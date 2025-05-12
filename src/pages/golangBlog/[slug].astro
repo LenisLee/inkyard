@@ -1,0 +1,26 @@
+---
+import {getCollection, getEntryBySlug} from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+// Step 1: 告诉 Astro 要预渲染哪些路径
+export async function getStaticPaths() {
+    const blogPosts = await getCollection('blog');
+    return blogPosts.map(post => ({
+        params: {slug: post.slug},
+    }));
+}
+
+// Step 2: 拿到当前访问的 slug 参数，找到对应的文章
+const {slug} = Astro.params;
+const post = await getEntryBySlug('blog', slug);
+if (!post) {
+    throw new Error(`Post not found for slug: ${slug}`);
+}
+
+// Step 3: 获取文章内容和 metadata
+const {Content} = await post.render();
+const {title, date} = post.data;
+---
+<BlogLayout title={title} date={date}>
+    <Content/>
+</BlogLayout>
