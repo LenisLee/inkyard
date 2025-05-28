@@ -1,6 +1,8 @@
 ---
+import "../../styles/global.css"
 import {getCollection, getEntryBySlug} from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
+
 
 // Step 1: 告诉 Astro 要预渲染哪些路径
 export async function getStaticPaths() {
@@ -18,7 +20,7 @@ if (!post) {
 }
 
 // Step 3: 获取文章内容和 metadata
-const {Content} = await post.render();
+const { Content } = await post.render();
 const {title, date} = post.data;
 ---
 <BlogLayout title={title} date={date}>

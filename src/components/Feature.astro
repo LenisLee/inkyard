@@ -1,0 +1,10 @@
+---
+import FeatureItem from "./FeatureItem.astro"
+const contentList = [
+    {url:'/blog', title: '我的博客', description: '开发经验与想法',listType:'blog'},
+    {url:'/golangBlog', title: 'GO语言学习', description: '一个前端程序员该如何学习golang',listType: 'golangBlog'},
+]
+---
+<section class="max-w-5xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {contentList.map(item => <FeatureItem {...item} />)}
+</section>

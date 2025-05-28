@@ -1,28 +1,13 @@
 ---
+import "../styles/global.css"
 // @ts-ignore
 import {getIconByType,IconOption} from './options.ts'
 const {type,title} = Astro.props;
 const icons:IconOption  = getIconByType(type) ?? {beforeIcon:'',afterIcon:'',alt:'',type:''}
 const {beforeIcon,afterIcon,alt} = icons;
 ---
-<h3>
-    <img alt={alt} src={beforeIcon}/>
+<div class="flex justify-center items-center gap-2 text-base font-bold sm:text-base">
+    <img alt={alt} src={beforeIcon} class="sm:w-10 h-10"/>
     {title}
-    {afterIcon && <img alt={alt} src={afterIcon}/>}
-</h3>
-<style lang="scss">
-  h3 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin: 0 auto;
-    width: fit-content;
-
-    img {
-      width: 35px;
-      height: 35px;
-    }
-  }
-
-</style>
+    {afterIcon && <img class="sm:w-10 h-10" alt={alt} src={afterIcon}/>}
+</div>

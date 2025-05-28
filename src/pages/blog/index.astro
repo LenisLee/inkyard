@@ -1,64 +1,27 @@
 ---
+import "../../styles/global.css"
 import ListTitle from '../../components/ListTitle.astro'
-import {getCollection} from 'astro:content';
+import BlogLayout from "../../layouts/BlogLayout.astro";
+import { getCollection } from 'astro:content';
 const posts = await getCollection('blog');
 const blogContent ={
     type:'blog',
     title:'经验总结'
 }
 ---
-
-<div class="blog-list">
-    <ListTitle type={blogContent.type} title={blogContent.title}/>
-    <ul>
-        {posts.map(post => (
-                <a href={`/blog/${post.slug}`}>
-                    <li class="item">
-                        <img alt="blog" src="/src/assets/bookmark.svg" width="24" height="24"/>
-                        <div>{post.data.title}</div>
-                        <div class="time">{post.data.date}</div>
-                    </li>
-                </a>
-        ))}
-    </ul>
-</div>
-
-<style lang="scss">
-  .blog-list {
-    margin: 0 auto;
-    max-width: 500px;
-    padding: 20px 0;
-
-    ul {
-      a {
-        text-decoration: none;
-        color: inherit;
-      }
-
-      .item {
-        padding: 5px 10px;
-        list-style: none;
-        text-decoration: none;
-        color: inherit;
-        cursor: pointer;
-        display: flex;
-        justify-content: flex-start;
-        gap: 10px;
-        align-items: center;
-        border-radius: 2px;
-        background-color: #f0f0f0;
-        margin: 4px 0;
-
-        .time {
-          margin-left: auto;
-        }
-      }
-
-      .item:hover {
-        background: #E5E5E5;
-      }
-    }
-
-  }
-
-</style>
+<BlogLayout title={blogContent.title}>
+    <section class="bg-yellow-50 max-w-5xl mx-auto px-4 py-5 gap-4 text-base sm:text-2xl md:text-2xl h-screen overflow-auto">
+        <ListTitle type={blogContent.type} title={blogContent.title}/>
+        <ul class="list-none">
+            {posts.map(post => (
+                    <a href={`/blog/${post.slug}`}>
+                        <li class="flex justify-items-start items-center gap-2 py-1 sm:text-base">
+                            <img alt="blog" src="/src/assets/bookmark.svg" class="w-5 h-5"/>
+                            <div>{post.data.title}</div>
+                            <div class="ml-auto">{post.data.date}</div>
+                        </li>
+                    </a>
+            ))}
+        </ul>
+    </section>
+</BlogLayout>
