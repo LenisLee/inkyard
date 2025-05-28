@@ -1,7 +1,3 @@
-// const blogBeforeIcon = '/src/assets/book.svg'
-// const blogAfterIcon = '/src/assets/smiling.svg'
-// const golangBeforeIcon = '/src/assets/golang.svg'
-
 import blogBeforeIcon from '../assets/book.svg'
 import blogAfterIcon from '../assets/smiling.svg'
 import golangBeforeIcon from '../assets/golang.svg'
