@@ -1,6 +1,10 @@
-const blogBeforeIcon = '/src/assets/book.svg'
-const blogAfterIcon = '/src/assets/smiling.svg'
-const golangBeforeIcon = '/src/assets/golang.svg'
+// const blogBeforeIcon = '/src/assets/book.svg'
+// const blogAfterIcon = '/src/assets/smiling.svg'
+// const golangBeforeIcon = '/src/assets/golang.svg'
+
+import blogBeforeIcon from '../assets/book.svg'
+import blogAfterIcon from '../assets/smiling.svg'
+import golangBeforeIcon from '../assets/golang.svg'
 
 export interface IconOption {
     type: string,
@@ -13,13 +17,13 @@ const iconOption: IconOption[] = [
     {
         type: 'blog',
         alt: 'blog',
-        beforeIcon: blogBeforeIcon,
-        afterIcon: blogAfterIcon
+        beforeIcon: blogBeforeIcon.src,
+        afterIcon: blogAfterIcon.src
     },
     {
         type: 'golangBlog',
         alt: 'blog',
-        beforeIcon: golangBeforeIcon,
+        beforeIcon: golangBeforeIcon.src,
         afterIcon: ''
     },
 ]

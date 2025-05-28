@@ -1,5 +1,6 @@
 ---
 import "../../styles/global.css"
+import blogIcon from '../../assets/bookmark.svg'
 import ListTitle from '../../components/ListTitle.astro';
 import {getCollection} from 'astro:content';
 import BlogLayout from "../../layouts/BlogLayout.astro";
@@ -17,7 +18,7 @@ const blogContent = {
             {posts.map(post => (
                     <a href={`/blog/${post.slug}`}>
                         <li class="flex justify-items-start items-center gap-2 py-1 sm:text-base">
-                            <img alt="blog" src="/src/assets/bookmark.svg" class="w-5 h-5"/>
+                            <img alt="blog" src={blogIcon.src} class="w-5 h-5"/>
                             <div>{post.data.title}</div>
                             <div class="ml-auto">{post.data.date}</div>
                         </li>
